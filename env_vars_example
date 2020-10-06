@@ -1,0 +1,13 @@
+## GitHub variables
+export ACTION_NAME=
+export DEPLOY_TOKEN=
+export REPO_URL=
+export BRANCH=
+
+## OpenStack variable
+export OS_AUTH_URL="https://api.selvpc.ru/identity/v3"
+export OS_PROJECT_DOMAIN_NAME=
+export OS_PROJECT_ID=
+export OS_USER_DOMAIN_NAME=
+export OS_USERNAME=
+export OS_PASSWORD=
