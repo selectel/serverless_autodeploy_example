@@ -1,7 +1,8 @@
 import os
 import requests
+import sels8s
 
-from deploy_function import s8s_client
+serverless = sels8s.Serverless()
 
 
 def deploy(*args, **kwargs):
@@ -34,11 +35,9 @@ def deploy(*args, **kwargs):
     else:
         print(f"Request redirect o your repo failed with {rresp.status_code}")
 
-    # Create serverless client
-    ss_client = s8s_client.Serverless()
 
     # Upload zip to Selectel Functions
-    upload_resp = ss_client.upload_module("code_sample.zip")
+    upload_resp = serverless.upload_module("code_sample.zip")
     if upload_resp.status_code == 200:
         print("New code upload successfully")
     else:
@@ -47,7 +46,7 @@ def deploy(*args, **kwargs):
     # Get module_id from upload_resp
     module_id = upload_resp.json()["function_id"]
     # Update existing action with the new code
-    edit_resp = ss_client.edit_function(action_name, function_id=module_id)
+    edit_resp = serverless.edit_function(action_name, function_id=module_id)
     if edit_resp.status_code == 200:
         print("Function update")
     else:
