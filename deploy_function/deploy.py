@@ -47,7 +47,6 @@ def deploy(*args, **kwargs):
     # Get module_id from upload_resp
     module_id = upload_resp.json()["function_id"]
     # Update existing action with the new code
-    print(action_name, module_id)
     edit_resp = serverless.edit_function(action_name, function_id=module_id)
     if edit_resp.status_code == 200:
         print("Function update")
